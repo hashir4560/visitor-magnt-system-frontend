@@ -9,39 +9,45 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import { useAuth } from './contexts/auth.context';
 
 // ----------------------------------------------------------------------
 
 export default function Router() {
-  const routes = useRoutes([
+  const auth = useAuth();
+
+  const loggedInRoutes = useRoutes([
     {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'visitor', element: <UserPage /> },
+        { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
       ],
-    },
-    {
-      path: 'login',
-      element: <LoginPage />,
     },
     {
       element: <SimpleLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: '404', element: <Page404 /> },
-        { path: '*', element: <Navigate to="/404" /> },
+        { path: '*', element: <Navigate to="/dashboard/app" /> },
       ],
-    },
-    {
-      path: '*',
-      element: <Navigate to="/404" replace />,
     },
   ]);
 
-  return routes;
+  const loggedOutRoutes = useRoutes([
+    {
+      path: 'login',
+      element: <LoginPage />,
+    },
+    {
+      path: '*',
+      element: <Navigate to="/login" replace />,
+    },
+  ]);
+
+  return auth.data.loggedIn ? loggedInRoutes : loggedOutRoutes;
 }

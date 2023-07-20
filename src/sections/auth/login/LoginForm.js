@@ -5,11 +5,15 @@ import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox } from '@m
 import { LoadingButton } from '@mui/lab';
 // components
 import Iconify from '../../../components/iconify';
+import useLogin from '../../../hooks/useLogin';
+import { useAuth } from '../../../contexts/auth.context';
 
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  const login = useLogin();
+  const auth = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -20,11 +24,25 @@ export default function LoginForm() {
   return (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField
+          name="email"
+          id="email"
+          label="Email address"
+          value={login.form.values.email}
+          error={!!login.form.errors.email}
+          helperText={login.form.errors.email}
+          onChange={login.form.handleChange('email')}
+          onBlur={login.form.handleBlur('email')}
+        />
 
         <TextField
           name="password"
           label="Password"
+          value={login.form.values.password}
+          error={!!login.form.errors.password}
+          helperText={login.form.errors.password}
+          onChange={login.form.handleChange('password')}
+          onBlur={login.form.handleBlur('password')}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -45,7 +63,15 @@ export default function LoginForm() {
         </Link>
       </Stack>
 
-      <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={handleClick}>
+      <LoadingButton
+        fullWidth
+        size="large"
+        type="button"
+        variant="contained"
+        onClick={login.form.handleSubmit}
+        loading={auth.data.loggingIn}
+        disabled={auth.data.loggingIn}
+      >
         Login
       </LoadingButton>
     </>

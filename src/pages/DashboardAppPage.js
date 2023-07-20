@@ -37,7 +37,7 @@ export default function DashboardAppPage() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Visitors Expected" total={8} icon={"ant-design:peopleicon-filled"} />
+            <AppWidgetSummary title="Visitors Expected" total={8} icon={'ant-design:peopleicon-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -45,14 +45,19 @@ export default function DashboardAppPage() {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Defaulted Visitors" total={10} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary
+              title="Defaulted Visitors"
+              total={10}
+              color="warning"
+              icon={'ant-design:windows-filled'}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Pending Visits" total={10} color="error" icon={'ant-design:bug-filled'} />
           </Grid>
-          
-          <Grid item xs={12} md={6} lg={8}>
+
+          {/* <Grid item xs={12} md={6} lg={8}>
             <AppWebsiteVisits
               title="Website Visits"
               subheader="(+43%) than last year"
@@ -212,7 +217,7 @@ export default function DashboardAppPage() {
                 { id: '5', label: 'Sprint Showcase' },
               ]}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </>
