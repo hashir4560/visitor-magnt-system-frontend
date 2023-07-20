@@ -5,11 +5,14 @@ import SimpleLayout from './layouts/simple';
 //
 import BlogPage from './pages/BlogPage';
 import UserPage from './pages/UserPage';
+import NewUserPage from './pages/NewUserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import { useAuth } from './contexts/auth.context';
+import DepartmentPage from './pages/DepartmentPage';
+import NewDepartmentPage from './pages/NewDepartmentPage';
 
 // ----------------------------------------------------------------------
 
@@ -24,6 +27,9 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'visitor', element: <UserPage /> },
+        { path: 'visitor/new', element: <NewUserPage /> },
+        { path: 'department', element: <DepartmentPage /> },
+        { path: 'department/new', element: <NewDepartmentPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
       ],
@@ -49,5 +55,5 @@ export default function Router() {
     },
   ]);
 
-  return auth.data.loggedIn ? loggedInRoutes : loggedOutRoutes;
+  return auth.data.authenticating ? null : auth.data.loggedIn ? loggedInRoutes : loggedOutRoutes;
 }

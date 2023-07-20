@@ -4,17 +4,8 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "airbnb",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended",
-    "prettier"
-  ],
-  "plugins": [
-    "react",
-    "react-hooks",
-    "prettier"
-  ],
+  "extends": ["airbnb", "plugin:jsx-a11y/recommended", "plugin:react-hooks/recommended", "prettier"],
+  "plugins": ["react", "react-hooks", "prettier"],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 8,
@@ -37,7 +28,6 @@
     "no-nested-ternary": 0,
     "default-param-last": 0,
     "no-use-before-define": 0,
-    "no-underscore-dangle": 0,
     "no-extra-boolean-cast": 1,
     "react/button-has-type": 1,
     "no-restricted-exports": 0,

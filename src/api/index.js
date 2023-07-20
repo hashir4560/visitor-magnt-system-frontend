@@ -20,6 +20,10 @@ const useApi = () => {
     return apiInstance.get('/visitor');
   };
 
+  const getDepartments = () => {
+    return apiInstance.get('/department');
+  };
+
   const login = ({ email, password }) => {
     return apiInstance.post('/auth/login', { email, password });
   };
@@ -28,10 +32,21 @@ const useApi = () => {
     return apiInstance.get('/auth/me');
   };
 
+  const createVisitor = ({ name, email, phone, cnic }) => {
+    return apiInstance.post('/visitor', { name, email, phone, cnic });
+  };
+
+  const createDepartment = ({ name }) => {
+    return apiInstance.post('/department', { name });
+  };
+
   return {
     getVisitors,
     login,
     me,
+    createVisitor,
+    getDepartments,
+    createDepartment,
   };
 };
 

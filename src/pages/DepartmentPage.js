@@ -1,45 +1,38 @@
-import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
-import { sentenceCase } from 'change-case';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 // @mui
 import {
-  Card,
-  Table,
-  Stack,
-  Paper,
-  Avatar,
   Button,
-  Popover,
+  Card,
   Checkbox,
-  TableRow,
+  Container,
   MenuItem,
+  Paper,
+  Popover,
+  Stack,
+  Table,
   TableBody,
   TableCell,
-  Container,
-  Typography,
-  IconButton,
   TableContainer,
   TablePagination,
+  TableRow,
+  Typography,
 } from '@mui/material';
 // components
-import Label from '../components/label';
 import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 // sections
-import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
+import { UserListToolbar, UserListHead } from '../sections/@dashboard/user';
 // mock
-import useVisitors from '../hooks/useVisitors';
+import useDepartments from '../hooks/useDepartments';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'id', label: 'ID', alignRight: false },
+  { id: 'dept_id', label: 'ID', alignRight: false },
   { id: 'name', label: 'Name', alignRight: false },
-  { id: 'cnic', label: 'CNIC', alignRight: false },
-  { id: 'phone', label: 'Phone', alignRight: false },
-  { id: 'email', label: 'Email', alignRight: false },
   { id: '' },
 ];
 
@@ -69,19 +62,12 @@ function applySortFilter(array, comparator, query) {
     return a[1] - b[1];
   });
   if (query) {
-    return filter(
-      array,
-      (_user) =>
-        _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
-        _user.cnic.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
-        _user.phone.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
-        _user.email.toLowerCase().indexOf(query.toLowerCase()) !== -1
-    );
+    return filter(array, (_department) => _department.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
   }
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function UserPage() {
+export default function DepartmentPage() {
   const [open, setOpen] = useState(null);
 
   const [page, setPage] = useState(0);
@@ -96,10 +82,10 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const visitors = useVisitors();
+  const departments = useDepartments();
 
   useEffect(() => {
-    visitors.fetch();
+    departments.fetch();
   }, []);
 
   const handleOpenMenu = (event) => {
@@ -118,7 +104,7 @@ export default function UserPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = visitors.data.map((n) => n.name);
+      const newSelecteds = departments.data.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -154,33 +140,33 @@ export default function UserPage() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - visitors.data.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - departments.data.length) : 0;
 
-  const filteredUsers = applySortFilter(visitors.data, getComparator(order, orderBy), filterName);
+  const filteredDepartments = applySortFilter(departments.data, getComparator(order, orderBy), filterName);
 
-  const isNotFound = !filteredUsers.length && !!filterName;
+  const isNotFound = !filteredDepartments.length && !!filterName;
 
   const navigate = useNavigate();
 
   return (
     <>
       <Helmet>
-        <title>Vistors</title>
+        <title>Departments</title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Visitors
+            Departments
           </Typography>
           <Button
             variant="contained"
             onClick={() => {
-              navigate('/dashboard/visitor/new');
+              navigate('/dashboard/department/new');
             }}
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            New Vistor
+            New Department
           </Button>
         </Stack>
 
@@ -194,31 +180,25 @@ export default function UserPage() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={visitors.data.length}
+                  rowCount={departments.data.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, cnic, phone, email } = row;
-                    const selectedUser = selected.indexOf(name) !== -1;
+                  {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                    const { dept_id: deptId, name } = row;
+                    const selectedDepartment = selected.indexOf(name) !== -1;
 
                     return (
-                      <TableRow hover key={id} tabIndex={-1} role="checkbox" selected={selectedUser}>
+                      <TableRow hover key={deptId} tabIndex={-1} role="checkbox" selected={selectedDepartment}>
                         <TableCell padding="checkbox">
-                          <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, name)} />
+                          <Checkbox checked={selectedDepartment} onChange={(event) => handleClick(event, name)} />
                         </TableCell>
 
-                        <TableCell align="left">{id}</TableCell>
+                        <TableCell align="left">{deptId}</TableCell>
 
                         <TableCell align="left">{name}</TableCell>
-
-                        <TableCell align="left">{cnic}</TableCell>
-
-                        <TableCell align="left">{phone}</TableCell>
-
-                        <TableCell align="left">{email}</TableCell>
                       </TableRow>
                     );
                   })}
@@ -259,7 +239,7 @@ export default function UserPage() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={visitors.data.length}
+            count={departments.data.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

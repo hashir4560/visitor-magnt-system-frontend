@@ -17,9 +17,14 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
-    title: 'login',
-    path: '/login',
-    icon: icon('ic_lock'),
+    title: 'departments',
+    path: '/dashboard/department',
+    icon: icon('ic_user'),
+  },
+  {
+    title: 'visits',
+    path: '/dashboard/visit',
+    icon: icon('ic_user'),
   },
 ];
 

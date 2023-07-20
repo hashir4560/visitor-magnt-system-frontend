@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [loggingIn, setLoggingIn] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState(null);
-  const [authenticating, setAuthenticating] = useState(false);
+  const [authenticating, setAuthenticating] = useState(true);
 
   // Login handler
   const login = ({ email, password }) => {
