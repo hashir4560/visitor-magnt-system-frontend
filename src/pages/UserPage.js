@@ -68,7 +68,14 @@ function applySortFilter(array, comparator, query) {
     return a[1] - b[1];
   });
   if (query) {
-    return filter(array, (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+    return filter(
+      array,
+      (_user) =>
+        _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+        _user.cnic.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+        _user.phone.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+        _user.email.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
   }
   return stabilizedThis.map((el) => el[0]);
 }
