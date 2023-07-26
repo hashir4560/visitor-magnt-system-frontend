@@ -1,8 +1,11 @@
+/* eslint-disable import/no-unresolved */
 import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 import { useAuth } from '../../../contexts/auth.context';
+// eslint-disable-next-line import/order
+import CreateAdminPage from 'src/pages/CreateAdminPage';
 // mocks_
 import account from '../../../_mock/account';
 
@@ -31,6 +34,7 @@ const MENU_OPTIONS = [
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
+  const [showCreateAdmin, setShowCreateAdmin] = useState(false);
 
   const auth = useAuth();
 
@@ -40,6 +44,10 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+  };
+  const handleCreateAdminClick = () => {
+    setShowCreateAdmin(true);
+    handleClose();
   };
 
   return (

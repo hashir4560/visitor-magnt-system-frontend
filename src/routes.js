@@ -16,6 +16,7 @@ import NewDepartmentPage from './pages/NewDepartmentPage';
 import VisitPage from './pages/VisitPage';
 import NewVisitPage from './pages/NewVisitPage';
 import PastVisitPage from './pages/PastVisitPage';
+import CreateAdminPage from './pages/CreateAdminPage';
 
 // ----------------------------------------------------------------------
 
@@ -38,6 +39,7 @@ export default function Router() {
         { path: 'visit/past', element: <PastVisitPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
+        { path: '/dashboard/admin', element: <CreateAdminPage /> },
       ],
     },
     {

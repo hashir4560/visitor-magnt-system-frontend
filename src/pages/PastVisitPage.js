@@ -89,20 +89,22 @@ function applySortFilter(array, comparator, query) {
     if (order !== 0) return order;
     return a[1] - b[1];
   });
+
   if (query) {
-    return filter(array, (Pastvisits) => {
-      const lowerCaseQuery = query.toLowerCase();
+    const lowerCaseQuery = query.toLowerCase();
+    return array.filter((Pastvisits) => {
       const lowerCasePurpose = Pastvisits.purpose.toLowerCase();
-      const lowerCaseCheckinTime = moment(Pastvisits.checkintime).format('LLL').toLowerCase();
-      const lowerCaseCheckoutTime = moment(Pastvisits.checkouttime).format('LLL').toLowerCase();
+      const lowerCaseCheckinTime = moment(Pastvisits.checkintime).format('YYYY-MM-DD HH:mm').toLowerCase();
+      const lowerCaseCheckoutTime = moment(Pastvisits.checkouttime).format('YYYY-MM-DD HH:mm').toLowerCase();
 
       return (
         lowerCasePurpose.indexOf(lowerCaseQuery) !== -1 ||
         lowerCaseCheckinTime.indexOf(lowerCaseQuery) !== -1 ||
-        lowerCaseCheckoutTime.indexOf(lowerCaseQuery)
+        lowerCaseCheckoutTime.indexOf(lowerCaseQuery) !== -1
       );
     });
   }
+
   return stabilizedThis.map((el) => el[0]);
 }
 
@@ -191,7 +193,7 @@ export default function VisitPage() {
           <Typography variant="h4" gutterBottom>
             Past Visits
           </Typography>
-          <Button
+          {/* <Button
             variant="contained"
             onClick={() => {
               navigate('/dashboard/visit/past');
@@ -199,7 +201,7 @@ export default function VisitPage() {
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
             New Visit
-          </Button>
+          </Button> */}
         </Stack>
         <Card>
           <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />

@@ -47,6 +47,11 @@ const useApi = () => {
   const createVisitor = ({ name, email, phone, cnic }) => {
     return apiInstance.post('/visitor', { name, email, phone, cnic });
   };
+  // eslint-disable-next-line camelcase
+  const createAdmin = ({ first_name, last_name, email, password }) => {
+    // eslint-disable-next-line camelcase
+    return apiInstance.post('/admin', { first_name, last_name, email, password });
+  };
   // eslint-disable-next-line
   const createVisits = ({ visitor_id, purpose, checkintime, dept_id }) => {
     // eslint-disable-next-line
@@ -62,6 +67,7 @@ const useApi = () => {
     login,
     me,
     createVisitor,
+    createAdmin,
     getDepartments,
     deleteDepartments,
     createDepartment,
