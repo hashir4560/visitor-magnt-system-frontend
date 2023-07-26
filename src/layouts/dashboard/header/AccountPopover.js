@@ -21,6 +21,10 @@ const MENU_OPTIONS = [
     label: 'Settings',
     icon: 'eva:settings-2-fill',
   },
+  {
+    label: 'Create Admin',
+    icon: 'eva:home-fill',
+  },
 ];
 
 // ----------------------------------------------------------------------

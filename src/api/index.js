@@ -23,6 +23,18 @@ const useApi = () => {
   const getDepartments = () => {
     return apiInstance.get('/department');
   };
+  const deleteDepartments = () => {
+    return apiInstance.delete('/department/:id');
+  };
+  const getVisits = () => {
+    return apiInstance.get('/visit');
+  };
+  const getPastVisits = () => {
+    return apiInstance.get('/visit/past');
+  };
+  const checkout = (id) => {
+    return apiInstance.put(`/visit/${id}/checkout`);
+  };
 
   const login = ({ email, password }) => {
     return apiInstance.post('/auth/login', { email, password });
@@ -35,6 +47,11 @@ const useApi = () => {
   const createVisitor = ({ name, email, phone, cnic }) => {
     return apiInstance.post('/visitor', { name, email, phone, cnic });
   };
+  // eslint-disable-next-line
+  const createVisits = ({ visitor_id, purpose, checkintime, dept_id }) => {
+    // eslint-disable-next-line
+    return apiInstance.post('/visit', { visitor_id, purpose, checkintime, dept_id });
+  };
 
   const createDepartment = ({ name }) => {
     return apiInstance.post('/department', { name });
@@ -46,7 +63,12 @@ const useApi = () => {
     me,
     createVisitor,
     getDepartments,
+    deleteDepartments,
     createDepartment,
+    getVisits,
+    createVisits,
+    getPastVisits,
+    checkout,
   };
 };
 

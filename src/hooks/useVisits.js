@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import useApi from '../api';
 
-const useDepartments = () => {
+function useVisits() {
   const api = useApi();
 
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [checkingoutid, setcheckingoutid] = useState(null);
 
   const fetch = () => {
     setLoading(true);
     api
-      .getDepartments()
+      .getVisits()
       .then((res) => {
-        setData(res.data.department);
+        setData(res.data.visits); // Assuming the API returns an array of visits
       })
       .catch((err) => {
         setError(err?.response?.data?.message || 'Something went wrong');
@@ -22,20 +23,20 @@ const useDepartments = () => {
         setLoading(false);
       });
   };
-  // eslint-disable-next-line
-  const deleteDepartment = (dept_id) => {
-    setLoading(true);
+  const checkout = (id) => {
+    setcheckingoutid(id);
     api
-      .deleteDepartments(dept_id)
-      .then(() => {
-        // eslint-disable-next-line
-        setData((prevData) => prevData.filter((department) => department.id !== dept_id));
+      .checkout(id)
+      .then((res) => {
+        setData((data) => {
+          const idx = data.findIndex((visit) => visit.id === id);
+          data.splice(idx, 1);
+          return data;
+        });
       })
-      .catch((err) => {
-        setError(err?.response?.data?.message || 'Something went wrong');
-      })
+      .catch(console.log)
       .finally(() => {
-        setLoading(false);
+        setcheckingoutid(null);
       });
   };
 
@@ -44,8 +45,9 @@ const useDepartments = () => {
     error,
     data,
     fetch,
-    deleteDepartment,
+    checkout,
+    checkingoutid,
   };
-};
+}
 
-export default useDepartments;
+export default useVisits;

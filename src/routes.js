@@ -13,6 +13,9 @@ import DashboardAppPage from './pages/DashboardAppPage';
 import { useAuth } from './contexts/auth.context';
 import DepartmentPage from './pages/DepartmentPage';
 import NewDepartmentPage from './pages/NewDepartmentPage';
+import VisitPage from './pages/VisitPage';
+import NewVisitPage from './pages/NewVisitPage';
+import PastVisitPage from './pages/PastVisitPage';
 
 // ----------------------------------------------------------------------
 
@@ -30,6 +33,9 @@ export default function Router() {
         { path: 'visitor/new', element: <NewUserPage /> },
         { path: 'department', element: <DepartmentPage /> },
         { path: 'department/new', element: <NewDepartmentPage /> },
+        { path: 'visit/', element: <VisitPage /> },
+        { path: 'visit/new', element: <NewVisitPage /> },
+        { path: 'visit/past', element: <PastVisitPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
       ],

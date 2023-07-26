@@ -16,14 +16,15 @@ const useNewVisitor = () => {
       cnic: '',
       phone: '',
       name: '',
+      validationSchema: Yup.object().shape({
+        name: Yup.string().required('Name is required'),
+        email: Yup.string().required('Email is required').email('Invalid email'),
+        phone: Yup.string().required('Phone is required').matches(/^\d+$/, { message: 'Invalid phone' }),
+        cnic: Yup.string().required('CNIC is required').matches(/^\d+$/, { message: 'Invalid CNIC' }),
+      }),
       email: '',
     },
-    validationSchema: Yup.object().shape({
-      name: Yup.string().required('Name is required'),
-      email: Yup.string().required('Email is required').email('Invalid email'),
-      phone: Yup.string().required('Phone is required').matches(/^\d+$/, { message: 'Invalid phone' }),
-      cnic: Yup.string().required('CNIC is required').matches(/^\d+$/, { message: 'Invalid CNIC' }),
-    }),
+
     onSubmit: (values) => {
       setLoading(true);
       setError(null);

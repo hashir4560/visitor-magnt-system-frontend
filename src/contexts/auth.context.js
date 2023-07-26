@@ -69,6 +69,7 @@ export const AuthProvider = ({ children }) => {
     setLoggingIn(false);
     setError(null);
     setLoggedIn(false);
+    localStorage.removeItem('token');
   };
 
   useEffect(() => {

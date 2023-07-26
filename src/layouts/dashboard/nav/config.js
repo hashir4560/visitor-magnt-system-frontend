@@ -22,8 +22,13 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
-    title: 'visits',
+    title: ' Current Visits',
     path: '/dashboard/visit',
+    icon: icon('ic_user'),
+  },
+  {
+    title: ' Past Visits',
+    path: '/dashboard/visit/past',
     icon: icon('ic_user'),
   },
 ];
