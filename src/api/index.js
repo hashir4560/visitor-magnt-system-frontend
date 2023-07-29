@@ -57,11 +57,13 @@ const useApi = () => {
     // eslint-disable-next-line
     return apiInstance.post('/visit', { visitor_id, purpose, checkintime, dept_id });
   };
+  const updatePassword = ({ email, oldPassword, password }) => {
+    return apiInstance.put('/admin/password', { email, oldPassword, password });
+  };
 
   const createDepartment = ({ name }) => {
     return apiInstance.post('/department', { name });
   };
-
   return {
     getVisitors,
     login,
@@ -75,6 +77,7 @@ const useApi = () => {
     createVisits,
     getPastVisits,
     checkout,
+    updatePassword,
   };
 };
 

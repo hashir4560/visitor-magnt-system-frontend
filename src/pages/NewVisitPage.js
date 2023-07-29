@@ -8,7 +8,7 @@ export default function NewDepartmentPage() {
   return (
     <>
       <Helmet>
-        <title> Current Visits</title>
+        <title> New Visit</title>
       </Helmet>
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>

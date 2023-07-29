@@ -68,11 +68,11 @@ export default function CreateAdminPage() {
             <LoadingButton
               fullWidth
               size="large"
-              type="button"
+              type="submit" // Change the type attribute to "submit"
               variant="contained"
-              onClick={form.handleSubmit}
               loading={loading}
               disabled={loading}
+              onClick={form.handleSubmit}
             >
               Create Admin
             </LoadingButton>
