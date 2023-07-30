@@ -30,7 +30,7 @@ export default function DashboardAppPage() {
           </Grid>
 
           <Grid item xs={12} sm={8} md={6}>
-            <AppWidgetSummary title="Today Meetings" total={4} color="info" icon={'ant-design:peopleicon-filled'} />
+            <AppWidgetSummary title="Today Completed Meetings" total={4} color="info" icon={'ant-design:peopleicon-filled'} />
           </Grid>
 
           {/* <Grid item xs={12} md={6} lg={8}>
