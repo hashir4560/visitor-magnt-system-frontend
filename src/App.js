@@ -1,3 +1,5 @@
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 // routes
@@ -23,6 +25,7 @@ export default function App() {
           </AuthProvider>
         </ThemeProvider>
       </BrowserRouter>
+      <ToastContainer />
     </HelmetProvider>
   );
 }

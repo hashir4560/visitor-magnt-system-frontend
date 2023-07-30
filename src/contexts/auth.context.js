@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useApi from '../api';
 
@@ -25,11 +26,13 @@ export const AuthProvider = ({ children }) => {
       .then((res) => {
         const { token, user } = res.data;
         localStorage.setItem('token', token);
+        toast('Logged in successfully', { type: 'success' });
         setLoggedIn(true);
         setUser(user);
       })
       .catch((err) => {
         const message = err?.response?.data?.message || 'Something went wrong';
+        toast(message, { type: 'error' });
         setError(message);
         setLoggedIn(false);
       })

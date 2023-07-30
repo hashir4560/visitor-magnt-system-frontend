@@ -38,7 +38,14 @@ UserListToolbar.propTypes = {
   onFilterName: PropTypes.func,
 };
 
-export default function UserListToolbar({ numSelected, filterName, onFilterName }) {
+export default function UserListToolbar({
+  numSelected,
+  filterName,
+  onFilterName,
+  onClick = () => {},
+  loading = false,
+  disabled = true,
+}) {
   return (
     <StyledRoot
       sx={{
@@ -67,7 +74,7 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton onClick={onClick} disabled={loading || disabled}>
             <Iconify icon="eva:trash-2-fill" />
           </IconButton>
         </Tooltip>

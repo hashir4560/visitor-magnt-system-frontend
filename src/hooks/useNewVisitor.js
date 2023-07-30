@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,11 +31,12 @@ const useNewVisitor = () => {
       api
         .createVisitor(values)
         .then((res) => {
-          alert('Visitor created');
-          navigate('/dashboard/visitor/new');
+          toast('Vistor Created', { type: 'success' });
+          navigate('/dashboard/visitor');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';
+          toast(message, { type: 'error' });
           setError(message);
         })
         .finally(() => {

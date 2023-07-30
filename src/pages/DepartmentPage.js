@@ -88,6 +88,10 @@ export default function DepartmentPage() {
     departments.fetch();
   }, []);
 
+  useEffect(() => {
+    setSelected([]);
+  }, [departments.loading]);
+
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
   };
@@ -104,18 +108,18 @@ export default function DepartmentPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = departments.data.map((n) => n.name);
+      const newSelecteds = departments.data.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, id) => {
+    const selectedIndex = selected.indexOf(id);
     let newSelected = [];
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -171,7 +175,14 @@ export default function DepartmentPage() {
         </Stack>
 
         <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+          <UserListToolbar
+            numSelected={selected.length}
+            filterName={filterName}
+            onFilterName={handleFilterByName}
+            onClick={() => departments.deleteDepartments(selected)}
+            disabled={!selected?.length}
+            loading={departments.loading}
+          />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
@@ -188,12 +199,12 @@ export default function DepartmentPage() {
                 <TableBody>
                   {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                     const { dept_id: deptId, name } = row;
-                    const selectedDepartment = selected.indexOf(name) !== -1;
+                    const selectedDepartment = selected.indexOf(deptId) !== -1;
 
                     return (
                       <TableRow hover key={deptId} tabIndex={-1} role="checkbox" selected={selectedDepartment}>
                         <TableCell padding="checkbox">
-                          <Checkbox checked={selectedDepartment} onChange={(event) => handleClick(event, name)} />
+                          <Checkbox checked={selectedDepartment} onChange={(event) => handleClick(event, deptId)} />
                         </TableCell>
 
                         <TableCell align="left">{deptId}</TableCell>

@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useState } from 'react';
 import useApi from '../api';
 
@@ -7,6 +8,25 @@ const useDepartments = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+
+  const [deleting, setDeleting] = useState(false);
+
+  const deleteDepartments = (ids = []) => {
+    setDeleting(false);
+    api
+      .deleteDepartments({ ids })
+      .then(() => {
+        toast('Deleted department(s)', { type: 'success' });
+        fetch();
+      })
+      .catch((err) => {
+        const message = err?.response?.data?.message || 'Something went wrong';
+        toast(message, { type: 'error' });
+      })
+      .finally(() => {
+        setDeleting(false);
+      });
+  };
 
   const fetch = () => {
     setLoading(true);
@@ -45,6 +65,8 @@ const useDepartments = () => {
     data,
     fetch,
     deleteDepartment,
+    deleting,
+    deleteDepartments,
   };
 };
 

@@ -23,8 +23,11 @@ const useApi = () => {
   const getDepartments = () => {
     return apiInstance.get('/department');
   };
-  const deleteDepartments = () => {
+  const deleteDepartment = () => {
     return apiInstance.delete('/department/:id');
+  };
+  const deleteDepartments = ({ ids = [] }) => {
+    return apiInstance.post('/department/bulk-delete', { ids });
   };
   const getVisits = () => {
     return apiInstance.get('/visit');
@@ -47,6 +50,11 @@ const useApi = () => {
   const createVisitor = ({ name, email, phone, cnic }) => {
     return apiInstance.post('/visitor', { name, email, phone, cnic });
   };
+
+  const deleteVisitors = ({ ids = [] }) => {
+    return apiInstance.post(`/visitor/bulk-delete`, { ids });
+  };
+
   // eslint-disable-next-line camelcase
   const createAdmin = ({ first_name, last_name, email, password }) => {
     // eslint-disable-next-line camelcase
@@ -71,6 +79,7 @@ const useApi = () => {
     createVisitor,
     createAdmin,
     getDepartments,
+    deleteDepartment,
     deleteDepartments,
     createDepartment,
     getVisits,
@@ -78,6 +87,7 @@ const useApi = () => {
     getPastVisits,
     checkout,
     updatePassword,
+    deleteVisitors,
   };
 };
 

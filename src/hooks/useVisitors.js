@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useState } from 'react';
 import useApi from '../api';
 
@@ -7,6 +8,25 @@ const useVisitors = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+
+  const [deleting, setDeleting] = useState(false);
+
+  const deleteVisitors = (ids = []) => {
+    setDeleting(false);
+    api
+      .deleteVisitors({ids})
+      .then(() => {
+        toast('Deleted visitor(s)', { type: 'success' });
+        fetch();
+      })
+      .catch((err) => {
+        const message = err?.response?.data?.message || 'Something went wrong';
+        toast(message, { type: 'error' });
+      })
+      .finally(() => {
+        setDeleting(false);
+      });
+  };
 
   const fetch = () => {
     setLoading(true);
@@ -28,6 +48,8 @@ const useVisitors = () => {
     error,
     data,
     fetch,
+    deleting,
+    deleteVisitors,
   };
 };
 
