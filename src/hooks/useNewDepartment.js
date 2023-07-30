@@ -10,6 +10,7 @@ const useNewDepartment = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [message, setMessage] = useState(''); // Add the message state
 
   const form = useFormik({
     initialValues: {
@@ -24,7 +25,8 @@ const useNewDepartment = () => {
       api
         .createDepartment(values)
         .then((res) => {
-          alert('Department created');
+          setMessage('Department created'); // Set the success message
+          setLoading(false);
           navigate('/dashboard/department');
         })
         .catch((err) => {
@@ -37,6 +39,7 @@ const useNewDepartment = () => {
   return {
     loading,
     error,
+    message, // Add the message to the returned object
     form,
   };
 };

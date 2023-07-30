@@ -1,3 +1,4 @@
+import React from 'react';
 import { LoadingButton } from '@mui/lab';
 import { Helmet } from 'react-helmet-async';
 import { Card, Container, Stack, TextField, Typography } from '@mui/material';
@@ -31,6 +32,7 @@ export default function NewDepartmentPage() {
               onChange={newDepartment.form.handleChange('name')}
               onBlur={newDepartment.form.handleBlur('name')}
             />
+            {newDepartment.message && <div>{newDepartment.message}</div>} {/* Display the message */}
             <LoadingButton
               fullWidth
               size="large"

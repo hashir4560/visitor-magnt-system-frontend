@@ -21,29 +21,16 @@ export default function DashboardAppPage() {
 
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Hi,Welcome Back
         </Typography>
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Visitors Expected" total={8} icon={'ant-design:peopleicon-filled'} />
+        <Grid container spacing={12}>
+          <Grid item xs={12} sm={8} md={6}>
+            <AppWidgetSummary title="Current Visits" total={8} icon={'ant-design:peopleicon-filled'} />
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Completed Meetings" total={4} color="info" icon={'ant-design:apple-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary
-              title="Defaulted Visitors"
-              total={10}
-              color="warning"
-              icon={'ant-design:windows-filled'}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Pending Visits" total={10} color="error" icon={'ant-design:bug-filled'} />
+          <Grid item xs={12} sm={8} md={6}>
+            <AppWidgetSummary title="Today Meetings" total={4} color="info" icon={'ant-design:peopleicon-filled'} />
           </Grid>
 
           {/* <Grid item xs={12} md={6} lg={8}>
