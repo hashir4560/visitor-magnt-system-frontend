@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -27,10 +28,12 @@ const useNewDepartment = () => {
         .then((res) => {
           setMessage('Department created'); // Set the success message
           setLoading(false);
+          toast('Deartment Created', { type: 'success' });
           navigate('/dashboard/department');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';
+          toast(message, { type: 'error' });
           setError(message);
         });
     },

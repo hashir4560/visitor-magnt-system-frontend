@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -32,13 +33,16 @@ const useNewAdmin = () => {
       api
         .createAdmin(values)
         .then((res) => {
-          alert('Admin created');
-          setLoading(false);
-          navigate('/dashboard/admin');
+          toast('Admin created', { type: 'success' });
+          navigate('/dashboard/app');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';
+          toast(message, { type: 'error' });
           setError(message);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     },
   });

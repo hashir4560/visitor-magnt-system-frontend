@@ -1,12 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import { LoadingButton } from '@mui/lab';
-import { Helmet } from 'react-helmet-async';
-import * as Yup from 'yup';
 import { Card, Container, Stack, TextField, Typography } from '@mui/material';
-import { useState } from 'react';
 import { useFormik } from 'formik';
-import useNewAdmin from '../hooks/useNewAdmin';
-import { useAuth } from '../contexts/auth.context';
+import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 import useApi from '../api';
+import { useAuth } from '../contexts/auth.context';
 
 const ChangePasswordPage = () => {
   const [loading, setLoading] = useState(false);
@@ -14,6 +15,8 @@ const ChangePasswordPage = () => {
   const auth = useAuth();
   const api = useApi();
   const email = auth.data.user?.email;
+
+  const navigate = useNavigate();
 
   const form = useFormik({
     initialValues: {
@@ -34,13 +37,14 @@ const ChangePasswordPage = () => {
           password: values.password,
         })
         .then((res) => {
-          alert('Password Changed');
+          toast('Password Changed', { type: 'success' });
 
           // eslint-disable-next-line no-undef
-          navigate('/dashboard/admin/password');
+          navigate('/dashboard/app');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';
+          toast(message, { type: 'error' });
           setError(message);
         })
         .finally(() => {
@@ -88,7 +92,7 @@ const ChangePasswordPage = () => {
             <LoadingButton
               fullWidth
               size="large"
-              type="submit" // Change the type attribute to "submit"
+              type="submit"
               variant="contained"
               loading={loading}
               disabled={loading}
@@ -96,8 +100,6 @@ const ChangePasswordPage = () => {
             >
               Change Password
             </LoadingButton>
-
-            {error && <div>Error: {error}</div>}
           </Stack>
         </Card>
       </Container>

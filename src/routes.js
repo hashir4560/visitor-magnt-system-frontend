@@ -40,7 +40,7 @@ export default function Router() {
         { path: 'visit/past', element: <PastVisitPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
-        { path: 'dashboard/admin', element: <CreateAdminPage /> },
+        { path: 'admin', element: <CreateAdminPage /> },
         { path: 'admin/password', element: <ChangePasswordPage /> },
       ],
     },

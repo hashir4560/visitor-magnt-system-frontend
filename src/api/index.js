@@ -72,6 +72,10 @@ const useApi = () => {
   const createDepartment = ({ name }) => {
     return apiInstance.post('/department', { name });
   };
+
+  const getStats = () => {
+    return apiInstance.get('/visit/stats');
+  };
   return {
     getVisitors,
     login,
@@ -88,6 +92,7 @@ const useApi = () => {
     checkout,
     updatePassword,
     deleteVisitors,
+    getStats,
   };
 };
 
