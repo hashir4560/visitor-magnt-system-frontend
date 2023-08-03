@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/visitor-magnt-system-frontend/static/css/main.98ec47ca.css",
-    "main.js": "/visitor-magnt-system-frontend/static/js/main.950bb9c5.js",
+    "main.js": "/visitor-magnt-system-frontend/static/js/main.78ecb87d.js",
     "static/js/496.c8bc0447.chunk.js": "/visitor-magnt-system-frontend/static/js/496.c8bc0447.chunk.js",
+    "static/media/illustration_login.png": "/visitor-magnt-system-frontend/static/media/illustration_login.c0c19451de920ff0d8bc.png",
     "index.html": "/visitor-magnt-system-frontend/index.html",
     "main.98ec47ca.css.map": "/visitor-magnt-system-frontend/static/css/main.98ec47ca.css.map",
-    "main.950bb9c5.js.map": "/visitor-magnt-system-frontend/static/js/main.950bb9c5.js.map",
+    "main.78ecb87d.js.map": "/visitor-magnt-system-frontend/static/js/main.78ecb87d.js.map",
     "496.c8bc0447.chunk.js.map": "/visitor-magnt-system-frontend/static/js/496.c8bc0447.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.98ec47ca.css",
-    "static/js/main.950bb9c5.js"
+    "static/js/main.78ecb87d.js"
   ]
 }
