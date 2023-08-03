@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/visitor-magnt-system-frontend/static/css/main.98ec47ca.css",
-    "main.js": "/visitor-magnt-system-frontend/static/js/main.a2aaed8d.js",
+    "main.js": "/visitor-magnt-system-frontend/static/js/main.ee986936.js",
     "static/js/496.c8bc0447.chunk.js": "/visitor-magnt-system-frontend/static/js/496.c8bc0447.chunk.js",
     "static/media/illustration_login.png": "/visitor-magnt-system-frontend/static/media/illustration_login.c0c19451de920ff0d8bc.png",
     "static/media/ic_analytics.svg": "/visitor-magnt-system-frontend/static/media/ic_analytics.392230d0b8fe091959c8.svg",
@@ -12,11 +12,11 @@
     "static/media/ic_user.svg": "/visitor-magnt-system-frontend/static/media/ic_user.aadcba39c2f845ebb93d.svg",
     "static/media/ic_disabled.svg": "/visitor-magnt-system-frontend/static/media/ic_disabled.a67028e22df9f6fe3c1f.svg",
     "main.98ec47ca.css.map": "/visitor-magnt-system-frontend/static/css/main.98ec47ca.css.map",
-    "main.a2aaed8d.js.map": "/visitor-magnt-system-frontend/static/js/main.a2aaed8d.js.map",
+    "main.ee986936.js.map": "/visitor-magnt-system-frontend/static/js/main.ee986936.js.map",
     "496.c8bc0447.chunk.js.map": "/visitor-magnt-system-frontend/static/js/496.c8bc0447.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.98ec47ca.css",
-    "static/js/main.a2aaed8d.js"
+    "static/js/main.ee986936.js"
   ]
 }
