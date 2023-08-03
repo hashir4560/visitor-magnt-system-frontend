@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an api client (instance) with the base URL
 const apiInstance = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL,
+  baseURL: 'visitrack-folio3.azurewebsites.net',
 });
 
 // Attach the authorization header with each request if token exists
