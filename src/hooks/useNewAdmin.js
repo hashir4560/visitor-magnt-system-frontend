@@ -34,7 +34,7 @@ const useNewAdmin = () => {
         .createAdmin(values)
         .then((res) => {
           toast('Admin created', { type: 'success' });
-          navigate('/dashboard/app');
+          navigate('/visitor-magnt-system-frontend/dashboard/app');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';

@@ -196,7 +196,7 @@ export default function VisitPage() {
           {/* <Button
             variant="contained"
             onClick={() => {
-              navigate('/dashboard/visit/past');
+              navigate('/visitor-magnt-system-frontend/dashboard/visit/past');
             }}
             startIcon={<Iconify icon="eva:plus-fill" />}
           >

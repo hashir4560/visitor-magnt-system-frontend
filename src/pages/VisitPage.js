@@ -170,7 +170,7 @@ export default function VisitPage() {
           <Button
             variant="contained"
             onClick={() => {
-              navigate('/dashboard/visit/new');
+              navigate('/visitor-magnt-system-frontend/dashboard/visit/new');
             }}
             startIcon={<Iconify icon="eva:plus-fill" />}
           >

@@ -34,7 +34,7 @@ const useNewVisits = () => {
         .createVisits(values)
         .then((res) => {
           toast('Visit created', { type: 'success' });
-          navigate('/dashboard/visit/current');
+          navigate('/visitor-magnt-system-frontend/dashboard/visit/current');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';

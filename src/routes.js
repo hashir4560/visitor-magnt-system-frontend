@@ -26,42 +26,47 @@ export default function Router() {
 
   const loggedInRoutes = useRoutes([
     {
-      path: '/dashboard',
-      element: <DashboardLayout />,
+      path: '/visitor-magnt-system-frontend',
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
-        { path: 'app', element: <DashboardAppPage /> },
-        { path: 'visitor', element: <UserPage /> },
-        { path: 'visitor/new', element: <NewUserPage /> },
-        { path: 'department', element: <DepartmentPage /> },
-        { path: 'department/new', element: <NewDepartmentPage /> },
-        { path: 'visit/current', element: <VisitPage /> },
-        { path: 'visit/new', element: <NewVisitPage /> },
-        { path: 'visit/past', element: <PastVisitPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
-        { path: 'admin', element: <CreateAdminPage /> },
-        { path: 'admin/password', element: <ChangePasswordPage /> },
-      ],
-    },
-    {
-      element: <SimpleLayout />,
-      children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
-        { path: '404', element: <Page404 /> },
-        { path: '*', element: <Navigate to="/dashboard/app" /> },
+        {
+          path: 'dashboard',
+          element: <DashboardLayout />,
+          children: [
+            { element: <Navigate to="/visitor-magnt-system-frontend/dashboard/app" />, index: true },
+            { path: 'app', element: <DashboardAppPage /> },
+            { path: 'visitor', element: <UserPage /> },
+            { path: 'visitor/new', element: <NewUserPage /> },
+            { path: 'department', element: <DepartmentPage /> },
+            { path: 'department/new', element: <NewDepartmentPage /> },
+            { path: 'visit/current', element: <VisitPage /> },
+            { path: 'visit/new', element: <NewVisitPage /> },
+            { path: 'visit/past', element: <PastVisitPage /> },
+            { path: 'products', element: <ProductsPage /> },
+            { path: 'blog', element: <BlogPage /> },
+            { path: 'admin', element: <CreateAdminPage /> },
+            { path: 'admin/password', element: <ChangePasswordPage /> },
+          ],
+        },
+        {
+          element: <SimpleLayout />,
+          children: [
+            { element: <Navigate to="/visitor-magnt-system-frontend/dashboard/app" />, index: true },
+            { path: '404', element: <Page404 /> },
+            { path: '*', element: <Navigate to="/visitor-magnt-system-frontend/dashboard/app" /> },
+          ],
+        },
       ],
     },
   ]);
 
   const loggedOutRoutes = useRoutes([
     {
-      path: 'login',
+      path: 'visitor-magnt-system-frontend/login',
       element: <LoginPage />,
     },
     {
       path: '*',
-      element: <Navigate to="/login" replace />,
+      element: <Navigate to="/visitor-magnt-system-frontend/login" replace />,
     },
   ]);
 

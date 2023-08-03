@@ -166,7 +166,7 @@ export default function DepartmentPage() {
           <Button
             variant="contained"
             onClick={() => {
-              navigate('/dashboard/department/new');
+              navigate('/visitor-magnt-system-frontend/dashboard/department/new');
             }}
             startIcon={<Iconify icon="eva:plus-fill" />}
           >

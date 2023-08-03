@@ -40,7 +40,7 @@ const ChangePasswordPage = () => {
           toast('Password Changed', { type: 'success' });
 
           // eslint-disable-next-line no-undef
-          navigate('/dashboard/app');
+          navigate('/visitor-magnt-system-frontend/dashboard/app');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';

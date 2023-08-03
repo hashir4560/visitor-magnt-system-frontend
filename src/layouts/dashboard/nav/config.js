@@ -3,32 +3,34 @@ import SvgColor from '../../../components/svg-color';
 
 // ----------------------------------------------------------------------
 
-const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />;
+const icon = (name) => (
+  <SvgColor src={require(`../../../assets/icons/navbar/${name}.svg`)} sx={{ width: 1, height: 1 }} />
+);
 
 const navConfig = [
   {
     title: 'dashboard',
-    path: '/dashboard/app',
+    path: '/visitor-magnt-system-frontend/dashboard/app',
     icon: icon('ic_analytics'),
   },
   {
     title: 'visitors',
-    path: '/dashboard/visitor',
+    path: '/visitor-magnt-system-frontend/dashboard/visitor',
     icon: icon('ic_user'),
   },
   {
     title: 'departments',
-    path: '/dashboard/department',
+    path: '/visitor-magnt-system-frontend/dashboard/department',
     icon: icon('ic_user'),
   },
   {
     title: 'Current Visits',
-    path: '/dashboard/visit/current',
+    path: '/visitor-magnt-system-frontend/dashboard/visit/current',
     icon: icon('ic_user'),
   },
   {
     title: 'Past Visits',
-    path: '/dashboard/visit/past',
+    path: '/visitor-magnt-system-frontend/dashboard/visit/past',
     icon: icon('ic_user'),
   },
 ];

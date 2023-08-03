@@ -16,12 +16,12 @@ const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: 'eva:home-fill',
-    path: '/dashboard/app',
+    path: '/visitor-magnt-system-frontend/dashboard/app',
   },
   {
     label: 'Create Admin',
     icon: 'eva:home-fill',
-    path: '/dashboard/admin',
+    path: '/visitor-magnt-system-frontend/dashboard/admin',
   },
 ];
 
@@ -116,7 +116,7 @@ export default function AccountPopover() {
 
         <MenuItem
           onClick={() => {
-            navigate('/dashboard/admin/password');
+            navigate('/visitor-magnt-system-frontend/dashboard/admin/password');
           }}
         >
           Change Password

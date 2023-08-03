@@ -181,7 +181,7 @@ export default function UserPage() {
           <Button
             variant="contained"
             onClick={() => {
-              navigate('/dashboard/visitor/new');
+              navigate('/visitor-magnt-system-frontend/dashboard/visitor/new');
             }}
             startIcon={<Iconify icon="eva:plus-fill" />}
           >

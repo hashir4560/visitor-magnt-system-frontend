@@ -29,7 +29,7 @@ const useNewDepartment = () => {
           setMessage('Department created'); // Set the success message
           setLoading(false);
           toast('Deartment Created', { type: 'success' });
-          navigate('/dashboard/department');
+          navigate('/visitor-magnt-system-frontend/dashboard/department');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';

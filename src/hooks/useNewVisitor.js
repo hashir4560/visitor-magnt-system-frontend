@@ -32,7 +32,7 @@ const useNewVisitor = () => {
         .createVisitor(values)
         .then((res) => {
           toast('Vistor Created', { type: 'success' });
-          navigate('/dashboard/visitor');
+          navigate('/visitor-magnt-system-frontend/dashboard/visitor');
         })
         .catch((err) => {
           const message = err?.response?.data?.message || 'Something went wrong';

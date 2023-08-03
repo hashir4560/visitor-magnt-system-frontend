@@ -18,7 +18,7 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => {
-    navigate('/dashboard', { replace: true });
+    navigate('/visitor-magnt-system-frontend/dashboard', { replace: true });
   };
 
   return (
