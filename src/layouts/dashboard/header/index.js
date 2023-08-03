@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 // @mui
+import { AppBar, Box, IconButton, Stack, Toolbar } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // components
 import Iconify from '../../../components/iconify';
 //
-import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
 
 // import NotificationsPopover from './NotificationsPopover';
