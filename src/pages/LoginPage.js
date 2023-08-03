@@ -7,7 +7,6 @@ import useResponsive from '../hooks/useResponsive';
 // components
 import Logo from '../components/logo';
 import Iconify from '../components/iconify';
-import loginPhoto from '../../public/assets/illustrations/illustration_login.png';
 // sections
 import { LoginForm } from '../sections/auth/login';
 
@@ -64,7 +63,7 @@ export default function LoginPage() {
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Hi, Welcome Back
             </Typography>
-            <img src={loginPhoto} alt="login" />
+            <img src={require('../assets/illustrations/illustration_login.png')} alt="login" />
           </StyledSection>
         )}
 
