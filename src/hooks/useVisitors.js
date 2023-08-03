@@ -14,7 +14,7 @@ const useVisitors = () => {
   const deleteVisitors = (ids = []) => {
     setDeleting(false);
     api
-      .deleteVisitors({ids})
+      .deleteVisitors({ ids })
       .then(() => {
         toast('Deleted visitor(s)', { type: 'success' });
         fetch();

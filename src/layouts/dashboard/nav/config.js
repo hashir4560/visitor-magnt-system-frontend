@@ -22,12 +22,12 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
-    title: ' Current Visits',
-    path: '/dashboard/visit',
+    title: 'Current Visits',
+    path: '/dashboard/visit/current',
     icon: icon('ic_user'),
   },
   {
-    title: ' Past Visits',
+    title: 'Past Visits',
     path: '/dashboard/visit/past',
     icon: icon('ic_user'),
   },

@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 import useApi from '../api';
 
 const useStats = () => {

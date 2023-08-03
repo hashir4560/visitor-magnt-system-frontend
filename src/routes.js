@@ -35,7 +35,7 @@ export default function Router() {
         { path: 'visitor/new', element: <NewUserPage /> },
         { path: 'department', element: <DepartmentPage /> },
         { path: 'department/new', element: <NewDepartmentPage /> },
-        { path: 'visit/', element: <VisitPage /> },
+        { path: 'visit/current', element: <VisitPage /> },
         { path: 'visit/new', element: <NewVisitPage /> },
         { path: 'visit/past', element: <PastVisitPage /> },
         { path: 'products', element: <ProductsPage /> },

@@ -19,10 +19,6 @@ const MENU_OPTIONS = [
     path: '/dashboard/app',
   },
   {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
-  },
-  {
     label: 'Create Admin',
     icon: 'eva:home-fill',
     path: '/dashboard/admin',
@@ -104,7 +100,13 @@ export default function AccountPopover() {
 
         <Stack sx={{ p: 1 }}>
           {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={() => handleClick(option.path)}>
+            <MenuItem
+              key={option.label}
+              onClick={() => {
+                handleClick(option.path);
+                handleClose();
+              }}
+            >
               {option.label}
             </MenuItem>
           ))}

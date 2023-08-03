@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an api client (instance) with the base URL
 const apiInstance = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: process.env.REACT_APP_BACKEND_URL,
 });
 
 // Attach the authorization header with each request if token exists
@@ -60,6 +60,7 @@ const useApi = () => {
     // eslint-disable-next-line camelcase
     return apiInstance.post('/admin', { first_name, last_name, email, password });
   };
+
   // eslint-disable-next-line
   const createVisits = ({ visitor_id, purpose, checkintime, dept_id }) => {
     // eslint-disable-next-line
